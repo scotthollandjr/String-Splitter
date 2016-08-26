@@ -1,19 +1,23 @@
 var inputString;
 var cleanString;
 var outputString = [];
+var finalString = [];
 
 var print = function(inputString) {
-  //remove all symbols and separate by commas with quotes
+  // remove all symbols and separate by commas with quotes
   // cleanString = inputString.replace(/[^a-zA-Z ]/g, "");
   // outputString = '\"' + cleanString.split(' ').join('\", \"') + '\"';
 
   cleanString = inputString.split(",");
-  for (var i = 0, len = cleanString.length; i < len; i++) {
-    outputString.push(" " + '"' + cleanString[i] + '"');
+  console.log("cleanstring: " + cleanString);
+  outputString = cleanString.map(function(e) {
+    return e.trim();
+  });
+  for (var i = 0, len = outputString.length; i < len; i++) {
+    finalString.push('"' + outputString[i] + '"');
   };
-  console.log(cleanString[0]);
-  console.log(cleanString[1]);
-  $("ul#results").append("<li>" + outputString + "</li>");
+  console.log("finalString: " + finalString);
+  $("ul#results").append("<li>" + finalString + "</li>");
 //  $("input#userEntry").val() = '';
 }
 
@@ -25,3 +29,5 @@ $(document).ready(function() {
     event.preventDefault();
   });
 });
+
+// "Beef", " Peas", "  Dried Whole Egg", " Potatoes", "  Pea Protein", " Pork Meat Meal", "  Beef Liver", " Sweet Potatoes", " Dried Tomato Pomace", " Salmon Oil", "  Flaxseed", " Cheese", " Carrots", " Broccoli", " Cauliflower", "  Apples", "  Green Beans", " Pork Cartilage", " Potassium Chloride", " Cranberries", " Blueberries", " Salt", " Chicory Root Extract", " Alfalfa Sprouts", " Celery", "  Lettuce", " Watercress", "  Spinach", " Yucca Schidigera Extract", "  Sodium Selenite", " Folic Acid", "  Taurine", " Parsley", " Sorbic Acid (Preservative)", "  Vitamins", " Minerals", " Probiotics."
