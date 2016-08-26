@@ -9,14 +9,12 @@ var print = function(inputString) {
   // outputString = '\"' + cleanString.split(' ').join('\", \"') + '\"';
 
   cleanString = inputString.split(",");
-  console.log("cleanstring: " + cleanString);
   outputString = cleanString.map(function(e) {
     return e.trim();
   });
   for (var i = 0, len = outputString.length; i < len; i++) {
     finalString.push('"' + outputString[i] + '"');
   };
-  console.log("finalString: " + finalString);
   $("ul#results").append("<li>" + finalString + "</li>");
 //  $("input#userEntry").val() = '';
 }
@@ -26,6 +24,7 @@ $(document).ready(function() {
     inputString = $("input#userEntry").val();
     $("ul#results").empty();
     print(inputString);
+    $("input#userEntry").val("");
     event.preventDefault();
   });
 });
